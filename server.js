@@ -1,17 +1,28 @@
-var orm = require("./config/orm.js");
+var express = require("express");
+var bodyParser = require("body-parser");
+var methodOverride = require("method-override");
 
+var port = 3000;
 
-// Console log all the party_name's.
-orm.select("*", "parties");
+var app = express();
 
-// Console log all the client_name's.
-orm.select("client_name", "clients");
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(process.cwd() + "/public"));
 
-// Console log all the parties that have a party-type of grown-up.
-orm.selectWhere("parties", "party_type", "grown-up");
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// Console log all the clients and their parties.
-orm.leftJoin("*", "clients", "parties", "id", "client_id");
+// Override with POST having ?_method=DELETE
+app.use(methodOverride("_method"));
 
-// Console log all the clients and their parties.
-orm.rightJoin("*", "clients", "parties", "id", "client_id");
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
+
+app.use("/", routes);
+
+app.listen(port);
