@@ -23,8 +23,3 @@ devoured BOOLEAN,
 date TIMESTAMP,
 PRIMARY KEY (id)
 );
-
--- Insert a set of records.
-INSERT INTO wishes (wishes) VALUES ('Natt wish it would stop raining.');
-INSERT INTO wishes (wishes) VALUES ('Abdullah wishes he had more steak from the other room.');
-INSERT INTO wishes (wishes) VALUES ('Kris wishes for more coding projects');
