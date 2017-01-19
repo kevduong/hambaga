@@ -1,16 +1,15 @@
-<h1>Hambagas!</h1>
+<h1>Burgers!</h1>
 
-<h2>List of hambagas!</h2>
-
+<h2>list of burgers</h2>
 <ul>
   {{#each burgers}}
-    {{#unless this.sleepy}}
+    {{#unless this.devour}}
       <li>
-        {{this.name}}
+        {{this.burger_name}}
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="sleepy" value="true">
-          <button type="submit">SLEEP TIME!</button>
+          <input type="hidden" name="devour" value="true">
+          <button type="submit">DEVOURED</button>
         </form>
 
         {{> burger/delete-cat}}
@@ -23,12 +22,12 @@
 
 <ul>
   {{#each burgers}}
-    {{#if this.sleepy}}
+    {{#if this.burger}}
       <li>
-        {{this.name}}
+        {{this.burger}}
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="sleepy" value="false">
+          <input type="hidden" name="devour" value="false">
           <button type="submit">WAKE UP!</button>
         </form>
 
@@ -47,9 +46,9 @@
   </div>
 
   <div class="form-group">
-    <label for="sleep">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
+    <label for="sleep">devour?</label><br>
+    <input type="radio" name="devour" value="1" checked> devour!<br>
+    <input type="radio" name="devour" value="0"> Awake
   </div>
 
   <button type="submit">Add Burger</button>
