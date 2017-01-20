@@ -1,14 +1,14 @@
 <h1>Burgers!</h1>
 
-<h2>list of burgers</h2>
+<h2>DEVOURED BURGERS</h2>
 <ul>
   {{#each burgers}}
-    {{#unless this.devour}}
+    {{#unless this.devoured}}
       <li>
         {{this.burger_name}}
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devour" value="true">
+          <input type="hidden" name="devoured" value="true">
           <button type="submit">DEVOURED</button>
         </form>
 
@@ -18,17 +18,17 @@
   {{/each}}
 </ul>
 
-<h2>burgers that are devoured!</h2>
+<h2>BURGER MENU</h2>
 
 <ul>
   {{#each burgers}}
-    {{#if this.burger}}
+    {{#if this.devoured}}
       <li>
-        {{this.burger}}
+        {{this.burger_name}}
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devour" value="false">
-          <button type="submit">WAKE UP!</button>
+          <input type="hidden" name="devoured" value="false">
+          <button type="submit">DEVOUR!</button>
         </form>
 
         {{> burger/delete-cat}}
@@ -44,10 +44,6 @@
     <label for="ca">Burgers Name:</label>
     <input type="text" id="ca" name="name">
   </div>
-
-  {{!-- <div class="form-group">
-    <label for="sleep">devour?</label><br>
-  </div> --}}
 
   <button type="submit">Add Burger</button>
 </form>
