@@ -1,13 +1,14 @@
 {{!-- Add new burger --}}
+<div style="text-align: center">
 <h2>Add new burger</h2>
 <form class="create-update-form" action="/" method="POST">
 
   <div class="form-group">
-    <label for="ca">Burgers Name:</label>
-    <input type="text" id="ca" name="name">
+    <label for="ca">New burgers I'd like to try:</label>
+    <input type="text" id="ca" name="burger_name">
   </div>
   <button type="submit">Submit</button>
-
+</div>
 {{!-- Burger Wishlist --}}
 <h2>Burgers to try:</h2>
 
@@ -19,7 +20,7 @@
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="false">
-          <button type="submit">DEVOUR!</button>
+          <button type="submit">devoured</button>
         </form>
 
         {{> burger/delete-burger}}
@@ -39,9 +40,8 @@
 
         <form action="/{{this.id}}?_method=PUT" method="POST">
           <input type="hidden" name="devoured" value="true">
-          <button type="submit">Devoured</button>
+          <button type="submit">remove</button>
         </form>
-
         {{> burger/delete-burger}}
       </li>
     {{/unless}}
