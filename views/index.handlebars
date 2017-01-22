@@ -3,14 +3,15 @@
     .col-lg-5 {
       background-color: #ecf0f1;
       border: solid 1px #b0bec5;
-    };
+      margin-bottom: 50px;
+    }
 
     h3 {
       text-decoration: underline;
       margin-bottom: 50px;
       font-size: 30px;
       font-weight: bold;
-    };
+    }
 
     ul {
       padding-bottom: 10px;
@@ -19,6 +20,7 @@
 
 </style>
 
+{{!-- Add new burger --}}
 <div style="text-align: center; padding-bottom: 50px">
     <form class="create-update-form" action="/" method="POST">
 
@@ -30,13 +32,13 @@
          <i class="fa fa-plus icon-large"></i>
       </button>
         </div>
-
     </form>
 </div>
 
+{{!-- Main body --}}
 <div class="container" style="text-align: center;">
     <div class="row">
-        {{!-- Hambagas To-Try --}}
+    {{!-- Hambagas To-Try --}}
         <div class="col-lg-5">
             <h3>hambagas to-try</h3>
             <ul>
@@ -65,7 +67,7 @@
         </div>
 
         {{!-- Devoured --}}
-        <div class="col-lg-5" style="background-color: #ecf0f1; border: solid 1px #b0bec5;">
+        <div class="col-lg-5">
             <h3>hambagas devoured</h3>
             <ul style="font-style: italic;">
                 {{#each burgers}}
